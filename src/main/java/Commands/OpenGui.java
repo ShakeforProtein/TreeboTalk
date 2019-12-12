@@ -12,6 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class OpenGui implements CommandExecutor {
@@ -83,10 +84,36 @@ public class OpenGui implements CommandExecutor {
             guiInv.setItem(26, dyeBlack);
             guiInv.setItem(31, sVoid);
 
-           for(i=9; i<27; i++){
-               if(!sender.hasPermission("name-col." + guiInv.getItem(i).getType().name())){
-                    guiInv.setItem(i, barrier);
+            HashMap<Integer, String> colHash = new HashMap<>();
+            colHash.putIfAbsent(9, ChatColor.RED + "Red");
+            colHash.putIfAbsent(10, ChatColor.DARK_RED + "Dark Red");
+            colHash.putIfAbsent(11, ChatColor.GOLD + "Gold");
+            colHash.putIfAbsent(12, ChatColor.YELLOW + "Yellow");
+            colHash.putIfAbsent(13, ChatColor.GREEN + "Green");
+            colHash.putIfAbsent(14, ChatColor.DARK_GREEN + "Dark Green");
+            colHash.putIfAbsent(15, ChatColor.AQUA + "Aqua");
+            colHash.putIfAbsent(16, ChatColor.DARK_AQUA + "Cyan");
+            colHash.putIfAbsent(17, ChatColor.BLUE + "Light Blue");
+            colHash.putIfAbsent(18, ChatColor.DARK_BLUE + "Blue");
+            colHash.putIfAbsent(20, ChatColor.LIGHT_PURPLE + "Light Purple");
+            colHash.putIfAbsent(9, ChatColor.DARK_PURPLE + "Dark Purple");
+            colHash.putIfAbsent(9, ChatColor.WHITE + "White");
+            colHash.putIfAbsent(9, ChatColor.GRAY + "Gray");
+            colHash.putIfAbsent(9, ChatColor.DARK_GRAY + "Dark Gray");
+            colHash.putIfAbsent(9, ChatColor.RED + "Black");
+
+
+            for(i=9; i<27; i++){
+               if(i==19 || i == 25 ){
+
                }
+               else if(!sender.hasPermission("name-col." + guiInv.getItem(i).getType().name())){
+                   ItemMeta newBarrierMeta = barrier.getItemMeta();
+                   newBarrierMeta.setDisplayName(colHash.get(i));
+                   barrier.setItemMeta(newBarrierMeta);
+                   guiInv.setItem(i, barrier);
+               }
+
            }
 
 
