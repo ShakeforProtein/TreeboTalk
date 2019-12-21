@@ -28,7 +28,7 @@ public class OpenGui implements CommandExecutor {
             p.setPlayerListName(args[0] + p.getName());
 */
 
-            Inventory guiInv = Bukkit.createInventory(null, 36, ChatColor.RED + "Name Color");
+            Inventory guiInv = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', "&0&lT&1&lr&2&le&3&le&4&lb&5&lo &6&lN&7&la&8&lm&9&le &a&lC&b&lo&c&ll&d&lo&e&lu&f&lr"));
 
             ItemStack dyeRed = new ItemStack(Material.RED_DYE, 1);
             ItemStack dyeDarkRed = new ItemStack(Material.REDSTONE, 1);
@@ -96,22 +96,31 @@ public class OpenGui implements CommandExecutor {
             colHash.putIfAbsent(17, ChatColor.BLUE + "Light Blue");
             colHash.putIfAbsent(18, ChatColor.DARK_BLUE + "Blue");
             colHash.putIfAbsent(20, ChatColor.LIGHT_PURPLE + "Light Purple");
-            colHash.putIfAbsent(9, ChatColor.DARK_PURPLE + "Dark Purple");
-            colHash.putIfAbsent(9, ChatColor.WHITE + "White");
-            colHash.putIfAbsent(9, ChatColor.GRAY + "Gray");
-            colHash.putIfAbsent(9, ChatColor.DARK_GRAY + "Dark Gray");
-            colHash.putIfAbsent(9, ChatColor.RED + "Black");
+            colHash.putIfAbsent(21, ChatColor.DARK_PURPLE + "Dark Purple");
+            colHash.putIfAbsent(22, ChatColor.WHITE + "White");
+            colHash.putIfAbsent(23, ChatColor.GRAY + "Gray");
+            colHash.putIfAbsent(24, ChatColor.DARK_GRAY + "Dark Gray");
+            colHash.putIfAbsent(26, ChatColor.BLACK + "Black");
 
 
             for(i=9; i<27; i++){
+                if(i != 19 && i != 25) {
+                    ItemStack slotStack = guiInv.getItem(i);
+                    ItemMeta slotMeta = slotStack.getItemMeta();
+                    slotMeta.setDisplayName(colHash.get(i));
+                    slotStack.setItemMeta(slotMeta);
+                    guiInv.setItem(i, slotStack);
+                }
                if(i==19 || i == 25 ){
 
                }
                else if(!sender.hasPermission("name-col." + guiInv.getItem(i).getType().name())){
-                   ItemMeta newBarrierMeta = barrier.getItemMeta();
-                   newBarrierMeta.setDisplayName(colHash.get(i));
-                   barrier.setItemMeta(newBarrierMeta);
                    guiInv.setItem(i, barrier);
+                   ItemStack slotStack = guiInv.getItem(i);
+                   ItemMeta slotMeta = slotStack.getItemMeta();
+                   slotMeta.setDisplayName(colHash.get(i));
+                   slotStack.setItemMeta(slotMeta);
+                   guiInv.setItem(i, slotStack);
                }
 
            }

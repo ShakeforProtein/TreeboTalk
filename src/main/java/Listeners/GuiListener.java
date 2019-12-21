@@ -16,7 +16,7 @@ public class GuiListener implements Listener {
 
     @EventHandler
     public void onInvClick(InventoryClickEvent e){
-        if(e.getView().getTitle().equalsIgnoreCase(ChatColor.RED + "Name Color")){
+        if(e.getView().getTitle().equalsIgnoreCase( ChatColor.translateAlternateColorCodes('&', "&0&lT&1&lr&2&le&3&le&4&lb&5&lo &6&lN&7&la&8&lm&9&le &a&lC&b&lo&c&ll&d&lo&e&lu&f&lr"))){
             e.setCancelled(true);
             String col = "";
             int slot = e.getSlot();
