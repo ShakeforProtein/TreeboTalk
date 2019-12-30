@@ -1,5 +1,6 @@
 package Commands;
 
+import me.shakeforprotein.treebotalk.TreeboTalk;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
@@ -17,6 +18,12 @@ import java.util.List;
 
 public class OpenGui implements CommandExecutor {
 
+    private TreeboTalk pl;
+
+    public OpenGui(TreeboTalk main){
+        this.pl = main;
+    }
+
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
 
@@ -28,7 +35,7 @@ public class OpenGui implements CommandExecutor {
             p.setPlayerListName(args[0] + p.getName());
 */
 
-            Inventory guiInv = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', "&0&lT&1&lr&2&le&3&le&4&lb&5&lo &6&lN&7&la&8&lm&9&le &a&lC&b&lo&c&ll&d&lo&e&lu&f&lr"));
+            Inventory guiInv = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', pl.getConfig().getString("namecolGuiTitle")));
 
             ItemStack dyeRed = new ItemStack(Material.RED_DYE, 1);
             ItemStack dyeDarkRed = new ItemStack(Material.REDSTONE, 1);

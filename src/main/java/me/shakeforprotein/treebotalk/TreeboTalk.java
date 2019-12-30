@@ -4,6 +4,7 @@ import Commands.OpenGui;
 import Listeners.ChatListener;
 import Listeners.GuiListener;
 import Listeners.JoinListener;
+import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -22,7 +23,12 @@ public final class TreeboTalk extends JavaPlugin {
         Bukkit.getPluginManager().registerEvents(new GuiListener(), this);
         Bukkit.getPluginManager().registerEvents(new JoinListener(), this);
 
-        this.getCommand("name-col").setExecutor(new OpenGui());
+        this.getCommand("name-col").setExecutor(new OpenGui(this));
+        if(getConfig().get("bstatsIntegration") != null) {
+            if (getConfig().getBoolean("bstatsIntegration")) {
+                Metrics metrics = new Metrics(this);
+            }
+        }
     }
 
     @Override

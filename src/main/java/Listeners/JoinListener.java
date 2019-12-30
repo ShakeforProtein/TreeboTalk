@@ -20,10 +20,10 @@ public class JoinListener implements Listener {
                     if (pl.getConfig().getConfigurationSection("PlayerColors").getKeys(false).size() > 0) {
                         if (pl.getConfig().getConfigurationSection("PlayerColors").getKeys(false).contains(e.getPlayer().getUniqueId() + "")) {
                             String col = pl.getConfig().getString("PlayerColors." + e.getPlayer().getUniqueId() + "");
-                            (e.getPlayer()).setPlayerListName(ChatColor.valueOf(col) + e.getPlayer().getName());
-                            (e.getPlayer()).setDisplayName(ChatColor.valueOf(col) + e.getPlayer().getName());
-                            (e.getPlayer()).setCustomName(ChatColor.valueOf(col) + e.getPlayer().getName());
-                            e.getPlayer().sendMessage(ChatColor.GOLD + "Your name has been updated to " + ChatColor.valueOf(col) + e.getPlayer().getName());
+                            (e.getPlayer()).setPlayerListName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getPlayer().getName());
+                            (e.getPlayer()).setDisplayName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getPlayer().getName());
+                            (e.getPlayer()).setCustomName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getPlayer().getName());
+                            e.getPlayer().sendMessage(ChatColor.GOLD + "Your name has been updated to " + ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getPlayer().getName());
                         }
                     }
                 }

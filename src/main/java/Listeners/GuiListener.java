@@ -51,10 +51,10 @@ public class GuiListener implements Listener {
                     col = material.name().split("_DYE")[0];
                 }
                 if (!col.equalsIgnoreCase("")) {
-                    ((Player) e.getView().getPlayer()).setPlayerListName(ChatColor.valueOf(col) + e.getView().getPlayer().getName());
-                    ((Player) e.getView().getPlayer()).setDisplayName(ChatColor.valueOf(col) + e.getView().getPlayer().getName());
-                    ((Player) e.getView().getPlayer()).setCustomName(ChatColor.valueOf(col) + e.getView().getPlayer().getName());
-                    e.getView().getPlayer().sendMessage(ChatColor.GOLD + "Your name has been updated to " + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                    ((Player) e.getView().getPlayer()).setPlayerListName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                    ((Player) e.getView().getPlayer()).setDisplayName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                    ((Player) e.getView().getPlayer()).setCustomName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                    e.getView().getPlayer().sendMessage(ChatColor.GOLD + "Your name has been updated to " + ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
                     pl.getConfig().set("PlayerColors." + e.getView().getPlayer().getUniqueId() + "", col);
                 } else {
                     ((Player) e.getView().getPlayer()).setPlayerListName(e.getView().getPlayer().getName());
