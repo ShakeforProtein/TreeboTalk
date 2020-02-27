@@ -19,48 +19,46 @@ public class ChatListener implements Listener {
             boolean cont1 = false;
             for (String msg : message.split(" ")) {
 
-                for (Player player : Bukkit.getOnlinePlayers()) {
-                    if (msg.length() > 1 && msg.startsWith("/") && !msg.startsWith(ChatColor.GOLD + "" + ChatColor.BOLD + "/")) {
-                        msg = ChatColor.GOLD + "" + ChatColor.BOLD + msg;
-                        block = true;
-                    }
-
-                    if (cont) {
-                        msg = ChatColor.RED + "" + ChatColor.BOLD + msg;
-                    }
-                    if (msg.length() > 1 && msg.startsWith("<")) {
-                        msg = ChatColor.RED + "" + ChatColor.BOLD + msg;
-                        if (!msg.endsWith(">")) {
-                            cont = true;
-                        }
-                    } else if (msg.length() > 1 && msg.endsWith(">")) {
-                        msg = ChatColor.RED + "" + ChatColor.BOLD + msg;
-                        cont = false;
-                    }
-
-                    if (cont1) {
-                        msg = ChatColor.GREEN + "" + ChatColor.BOLD + msg;
-                    }
-                    if (msg.length() > 1 && msg.startsWith("[")) {
-                        msg = ChatColor.GREEN + "" + ChatColor.BOLD + msg;
-                        if (!msg.endsWith("]")) {
-                            cont1 = true;
-                        }
-                    } else if (msg.length() > 1 && msg.endsWith("]")) {
-                        msg = ChatColor.GREEN + "" + ChatColor.BOLD + msg;
-                        cont1 = false;
-                    }
-
-                    msg = msg + ChatColor.RESET + " ";
-                    sB.append(msg);
-                }
-                if (block) {
-                    e.setMessage(sB.toString());
-                    //e.getPlayer().sendMessage(sB.toString());
+                if (msg.length() > 1 && msg.startsWith("/") && !msg.startsWith(ChatColor.GOLD + "" + ChatColor.BOLD + "/")) {
+                    msg = ChatColor.GOLD + "" + ChatColor.BOLD + msg;
+                    block = true;
                 }
 
+                if (cont) {
+                    msg = ChatColor.RED + "" + ChatColor.BOLD + msg;
+                }
+                if (msg.length() > 1 && msg.startsWith("<")) {
+                    msg = ChatColor.RED + "" + ChatColor.BOLD + msg;
+                    if (!msg.endsWith(">")) {
+                        cont = true;
+                    }
+                } else if (msg.length() > 1 && msg.endsWith(">")) {
+                    msg = ChatColor.RED + "" + ChatColor.BOLD + msg;
+                    cont = false;
+                }
+
+                if (cont1) {
+                    msg = ChatColor.GREEN + "" + ChatColor.BOLD + msg;
+                }
+                if (msg.length() > 1 && msg.startsWith("[")) {
+                    msg = ChatColor.GREEN + "" + ChatColor.BOLD + msg;
+                    if (!msg.endsWith("]")) {
+                        cont1 = true;
+                    }
+                } else if (msg.length() > 1 && msg.endsWith("]")) {
+                    msg = ChatColor.GREEN + "" + ChatColor.BOLD + msg;
+                    cont1 = false;
+                }
+
+                msg = msg + ChatColor.RESET + " ";
+                sB.append(msg);
             }
+            if (block) {
+                e.setMessage(sB.toString());
+                //e.getPlayer().sendMessage(sB.toString());
+            }
+
         }
     }
-
 }
+

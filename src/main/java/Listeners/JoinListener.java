@@ -27,6 +27,16 @@ public class JoinListener implements Listener {
                         }
                     }
                 }
+                if (pl.getConfig().getConfigurationSection("Nickname") != null) {
+                    if(pl.getConfig().getString("Nickname." + e.getPlayer().getUniqueId().toString()) != null){
+                        e.getPlayer().setDisplayName(pl.getConfig().getString("Nickname." + e.getPlayer().getUniqueId().toString()));
+                        if(pl.getConfig().getString("PlayerColors." + e.getPlayer().getUniqueId().toString()) != null){
+                            e.getPlayer().setDisplayName(ChatColor.valueOf(pl.getConfig().getString("PlayerColors." + e.getPlayer().getUniqueId().toString())) + pl.getConfig().getString("Nickname." + e.getPlayer().getUniqueId().toString()));
+                            e.getPlayer().setPlayerListName(ChatColor.valueOf(pl.getConfig().getString("PlayerColors." + e.getPlayer().getUniqueId().toString())) + pl.getConfig().getString("Nickname." + e.getPlayer().getUniqueId().toString()));
+                            e.getPlayer().setCustomName(ChatColor.valueOf(pl.getConfig().getString("PlayerColors." + e.getPlayer().getUniqueId().toString())) + pl.getConfig().getString("Nickname." + e.getPlayer().getUniqueId().toString()));
+                        }
+                    }
+                }
             }
         }, 100);
 
