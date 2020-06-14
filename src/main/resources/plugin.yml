@@ -2,11 +2,27 @@ name: TreeboTalk
 version: ${project.version}
 main: me.shakeforprotein.treebotalk.TreeboTalk
 api-version: 1.13
-description: Command formatting in chat
+authors: [ShakeforProtein RobertBeckley]
+description: Treebo Chat Formater
+website: treebo.games
 
 commands:
   name-col:
+    description: 'Open the colour GUI'
+    usage: <command>
     permission: name-col.use
+  clearmychat:
+    description: 'Spams Chat with 30 Blank Lines'
+    usage: <command>
+    permission: treebotalk.clear
+  treebotalkreload:
+    description: 'Allows a player to reload the config'
+    usage: <command>
+    permission: treebotalk.admin
+  treebotalkversion:
+    description: 'Allows a player to Check the plugin version'
+    usage: <command>
+    permission: treebotalk.admin
 
 permissions:
   name-col.use:
@@ -45,3 +61,9 @@ permissions:
     default: op
   treebotalk.nickame:
     default: false
+  treebotalk.admin:
+    default: false
+  treebotalk.clear:
+    default: true
+  treebotalk.admin.updatechecker:
+    default: true
