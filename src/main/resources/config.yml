@@ -1,2 +1,12 @@
-namecolGuiTitle: '&0&lT&1&lr&2&le&3&le&4&lb&5&lo &6&lN&7&la&8&lm&9&le &a&lC&b&lo&c&ll&d&lo&e&lu&f&lr'
+apiLink: 'https://api.github.com/repos/TreeboMC/TreeboTalk/releases/latest'
+releasePage: 'https://github.com/TreeboMC/TreeboTalk/releases/latest'
+checkUpdates: 'true'
+
 bstatsIntegration: true
+
+namecolGuiTitle: '&0&lT&1&lr&2&le&3&le&4&lb&5&lo &6&lN&7&la&8&lm&9&le &a&lC&b&lo&c&ll&d&lo&e&lu&f&lr'
+
+general:
+  messages:
+    badge: '&3&l[&3Treebo Talk&3&l]&r'
+    error: '&4ERROR:&r'
