@@ -49,11 +49,20 @@ public class GuiListener implements Listener {
                     col = "DARK_GRAY";
                 } else if (material.name().contains("_DYE")) {
                     col = material.name().split("_DYE")[0];
+                } else if (material == Material.NETHER_STAR) {
+                    col = "BOLD";
                 }
                 if (!col.equalsIgnoreCase("")) {
-                    ((Player) e.getView().getPlayer()).setPlayerListName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
-                    ((Player) e.getView().getPlayer()).setDisplayName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
-                    ((Player) e.getView().getPlayer()).setCustomName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                    if(col.equalsIgnoreCase("BOLD")){
+                        ((Player) e.getView().getPlayer()).setPlayerListName(ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                        ((Player) e.getView().getPlayer()).setDisplayName(ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                        ((Player) e.getView().getPlayer()).setCustomName(ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                    }
+                    else{
+                        ((Player) e.getView().getPlayer()).setPlayerListName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                        ((Player) e.getView().getPlayer()).setDisplayName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                        ((Player) e.getView().getPlayer()).setCustomName(ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
+                    }
                     e.getView().getPlayer().sendMessage(ChatColor.GOLD + "Your name has been updated to " + ChatColor.RESET + "" + ChatColor.valueOf(col) + e.getView().getPlayer().getName());
                     pl.getConfig().set("PlayerColors." + e.getView().getPlayer().getUniqueId() + "", col);
                 } else {

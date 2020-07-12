@@ -71,6 +71,7 @@ public class OpenGui implements CommandExecutor {
                 for (i = 0; i < 36; i++) {
                     guiInv.setItem(i, new ItemStack(Material.LIGHT_BLUE_STAINED_GLASS_PANE));
                 }
+                guiInv.setItem(4, starBold);
                 guiInv.setItem(9, dyeRed);
                 guiInv.setItem(10, dyeDarkRed);
                 guiInv.setItem(11, dyeOrange);
@@ -92,6 +93,7 @@ public class OpenGui implements CommandExecutor {
                 guiInv.setItem(31, sVoid);
 
                 HashMap<Integer, String> colHash = new HashMap<>();
+                colHash.putIfAbsent(4, ChatColor.BOLD + "BOLD");
                 colHash.putIfAbsent(9, ChatColor.RED + "Red");
                 colHash.putIfAbsent(10, ChatColor.DARK_RED + "Dark Red");
                 colHash.putIfAbsent(11, ChatColor.GOLD + "Gold");
@@ -110,17 +112,17 @@ public class OpenGui implements CommandExecutor {
                 colHash.putIfAbsent(26, ChatColor.BLACK + "Black");
 
 
-                for (i = 9; i < 27; i++) {
-                    if (i != 19 && i != 25) {
+                for (i = 4; i < 27; i++) {
+                    if (i != 19 && i != 25 && (i>4 && i <9)) {
                         ItemStack slotStack = guiInv.getItem(i);
                         ItemMeta slotMeta = slotStack.getItemMeta();
                         slotMeta.setDisplayName(colHash.get(i));
                         slotStack.setItemMeta(slotMeta);
                         guiInv.setItem(i, slotStack);
                     }
-                    if (i == 19 || i == 25) {
+                    if (i == 19 || i == 25 || (i>4 && i<9)) {
 
-                    } else if (!sender.hasPermission("name-col." + guiInv.getItem(i).getType().name())) {
+                    } else if (!sender.hasPermission("name-col." + guiInv.getItem(i).getType().name()) && !sender.hasPermission("treebotalk.boldname")) {
                         guiInv.setItem(i, barrier);
                         ItemStack slotStack = guiInv.getItem(i);
                         ItemMeta slotMeta = slotStack.getItemMeta();
@@ -149,7 +151,6 @@ public class OpenGui implements CommandExecutor {
                         p.setCustomName(ChatColor.valueOf(pl.getConfig().getString("PlayerColors." + p.getUniqueId().toString())) + pl.getConfig().getString("Nickname." + p.getUniqueId().toString()));
                     }
                 }
-
             }
         }
         return true;

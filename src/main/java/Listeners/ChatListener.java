@@ -1,8 +1,6 @@
 package Listeners;
 
-import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
-import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
@@ -18,6 +16,9 @@ public class ChatListener implements Listener {
             boolean cont = false;
             boolean cont1 = false;
             for (String msg : message.split(" ")) {
+                if(msg.startsWith("@") && !(msg.equalsIgnoreCase("@admin") || msg.equalsIgnoreCase("@helper") || msg.equalsIgnoreCase("@mod") || msg.equalsIgnoreCase("@srmod"))){
+                    msg = "@_" + msg.replace("@", "");
+                }
 
                 if (msg.length() > 1 && msg.startsWith("/") && !msg.startsWith(ChatColor.GOLD + "" + ChatColor.BOLD + "/")) {
                     msg = ChatColor.GOLD + "" + ChatColor.BOLD + msg;

@@ -43,5 +43,7 @@ permissions:
     default: op
   name-col.BLACK_DYE:
     default: op
+  treebotalk.boldname:
+    default: op
   treebotalk.nickame:
     default: false
