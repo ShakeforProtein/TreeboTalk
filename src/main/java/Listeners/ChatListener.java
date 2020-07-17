@@ -1,11 +1,19 @@
 package Listeners;
 
+import me.shakeforprotein.treebotalk.TreeboTalk;
 import org.bukkit.ChatColor;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.AsyncPlayerChatEvent;
+import org.bukkit.event.player.PlayerChatEvent;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ChatListener implements Listener {
+
+    private TreeboTalk pl;
 
     @EventHandler
     public void onCommandInChat(AsyncPlayerChatEvent e) {

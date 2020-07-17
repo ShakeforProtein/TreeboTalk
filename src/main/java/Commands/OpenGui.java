@@ -4,6 +4,7 @@ import me.shakeforprotein.treebotalk.TreeboTalk;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Nameable;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -37,6 +38,7 @@ public class OpenGui implements CommandExecutor {
             if (!sender.hasPermission("treebotalk.nickname") || args.length == 0) {
                 Inventory guiInv = Bukkit.createInventory(null, 36, ChatColor.translateAlternateColorCodes('&', pl.getConfig().getString("namecolGuiTitle")));
 
+                ItemStack starBold = new ItemStack(Material.NETHER_STAR, 1);
                 ItemStack dyeRed = new ItemStack(Material.RED_DYE, 1);
                 ItemStack dyeDarkRed = new ItemStack(Material.REDSTONE, 1);
                 ItemStack dyeOrange = new ItemStack(Material.ORANGE_DYE, 1);
@@ -137,6 +139,28 @@ public class OpenGui implements CommandExecutor {
                 ((Player) sender).openInventory(guiInv);
             }
 
+/*
+            else if(sender.hasPermission("treebotalk.hexColor") && args.length == 2){
+                pl.getConfig().set("Nickname." + ((Player) sender).getUniqueId().toString(), args[0]);
+                Player p = (Player) sender;
+                ((Nameable) p).setCustomName(net.md_5.bungee.api.ChatColor.of("#" + args[0]) + args[1]);
+
+                // p.setCustomName(Nameable.setCustomName() + p.getName());
+                //p.setPlayerListName(net.md_5.bungee.api.ChatColor.of(args[0]) + p.getName());
+                //p.setDisplayName(net.md_5.bungee.api.ChatColor.of(args[0]) + p.getName());
+                if(pl.getConfig().getString("Nickname." + p.getUniqueId().toString()) != null){
+                    //p.setDisplayName(pl.getConfig().getString("Nickname." + p.getUniqueId().toString()));
+                    //p.setDisplayName(net.md_5.bungee.api.ChatColor.of("#" + args[0]) + args[1]);
+                    //p.setPlayerListName(net.md_5.bungee.api.ChatColor.of("#" + args[0]) + args[1]);
+                    if(pl.getConfig().getString("PlayerColors." + p.getUniqueId().toString()) != null){
+                        //p.setDisplayName(ChatColor.valueOf(pl.getConfig().getString("PlayerColors." + p.getUniqueId().toString())) + pl.getConfig().getString("Nickname." + p.getUniqueId().toString()));
+                        //p.setPlayerListName(ChatColor.valueOf(pl.getConfig().getString("PlayerColors." + p.getUniqueId().toString())) + pl.getConfig().getString("Nickname." + p.getUniqueId().toString()));
+                        //p.setCustomName(ChatColor.valueOf(pl.getConfig().getString("PlayerColors." + p.getUniqueId().toString())) + pl.getConfig().getString("Nickname." + p.getUniqueId().toString()));
+                    }
+                }
+            }
+
+ */
             else if(sender.hasPermission("treebotalk.nickname") && args.length == 1){
                 pl.getConfig().set("Nickname." + ((Player) sender).getUniqueId().toString(), args[0]);
                 Player p = (Player) sender;

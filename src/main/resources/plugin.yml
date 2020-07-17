@@ -7,6 +7,7 @@ description: Command formatting in chat
 commands:
   name-col:
     permission: name-col.use
+  wins:
 
 permissions:
   name-col.use:
